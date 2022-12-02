@@ -5,10 +5,9 @@ const { Schema , model } = mongoose;
 const passportLocalMongoose = require('passport-local-mongoose');
 
 const User = new Schema ({
-  idUser: String,
+  uName: String,
   fName: String,
-  lName: String,
-  username: String
+  lName: String
 },{
   timestamps: true
 });

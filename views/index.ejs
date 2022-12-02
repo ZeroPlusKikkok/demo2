@@ -46,7 +46,7 @@
       .nav-scroller {
         position: relative;
         z-index: 2;
-        height: 2.75rem;
+        height: 2.75rem; 
         overflow-y: hidden;
       }
 
@@ -82,10 +82,15 @@
                 <table class="table table-bordered table-hover">
                   <thead>
                     <tr>
-                      <th scope="col">ID User</th>
+                      <th scope="col">ID Card</th>
                       <th scope="col">First Name</th>
                       <th scope="col">Last Name</th>
-                      <th scope="col">User Name</th>
+                      <th scope="col">Position</th>
+                      <th scope="col">Section</th>
+                      <th scope="col">Department</th>
+                      <th scope="col">Starting Date</th>
+                      <th scope="col">Image</th>
+                      <th scope="col">Action</th>
                     </tr>
                   </thead>
                 <tbody id="table_body"></tbody>
@@ -100,7 +105,7 @@
   
   <script>
 
-    const api_url = 'http://localhost:3000/users/list';
+    const api_url = 'http://localhost:3000/api/employees/list';
 
     const options = {
       method: 'GET',
@@ -109,7 +114,7 @@
       }
     };
 
-    async function getUser() {
+    async function getEmployee() {
       const response = await fetch(api_url, options);
       const data = await response.json();
       console.log(data);
@@ -117,16 +122,20 @@
       let tableData = "";
       data.map((values) => {
         tableData += `<tr>
-          <td>${values.idUser}</td>
+          <td>${values.idCard}</td>
           <td>${values.fName}</td>
           <td>${values.lName}</td>
-          <td>${values.username}</td>
+          <td>${values.position}</td>
+          <td>${values.section}</td>
+          <td>${values.department}</td>
+          <td>${values.dateStart}</td>
+          <td>${values.iMage}</td>
         </tr>`;
       });
       document.getElementById('table_body').innerHTML = tableData;
     }
 
-    getUser();
+    getEmployee();
 
   </script>
   

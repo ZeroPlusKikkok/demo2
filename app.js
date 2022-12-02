@@ -16,6 +16,8 @@ const expressSession = require('express-session')({
 
 const index = require('./routes/index');
 const users = require('./routes/users');
+const api = require('./routes/api/index');
+const employees = require('./routes/api/employees');
 
 const app = express();
 
@@ -45,6 +47,8 @@ app.use(cors());
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/api', api);
+app.use('/api/employees', employees);
 
 // Configure Passport
 passport.use(new LocalStrategy(User.authenticate()));
